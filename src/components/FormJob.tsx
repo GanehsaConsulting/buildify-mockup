@@ -14,14 +14,14 @@ export const FormJob = () => {
     return (
         <section className="mx-5 min-h-screen py-24">
             {/* Header */}
-            <div className=" mb-10 space-y-2">
+            <div className="mb-10 space-y-2">
                 <Title>{postJobPageData.title}</Title>
                 <p className="text-gray-600 dark:text-gray-300">
                     {postJobPageData.description}
                 </p>
             </div>
-            <div className="flex gap-5">
-                <div className="w-[70%] space-y-5">
+            <div className="flex md:flex-row flex-col gap-5">
+                <div className="md:w-[70%] space-y-5">
                     {/* Form Job */}
                     <div className="p-5 rounded-xl dark:bg-darkColor bg-lightColor shadow-secondary border space-y-6">
                         <h2 className="text-lg font-semibold mb-4">
@@ -29,8 +29,8 @@ export const FormJob = () => {
                         </h2>
                         <form className="space-y-3">
                             {Object.entries(postJobPageData.formFields).map(([key, field]) => (
-                                <div key={key} className="flex flex-row gap-1.5">
-                                    <Label className="w-1/3 !bg-mainColor/30 shadow-main" variant={"main"} htmlFor={key}>{field.label}</Label>
+                                <div key={key} className="flex flex-col md:flex-row gap-1.5">
+                                    <Label className="md:w-1/3 !bg-mainColor/30 shadow-main" variant={"main"} htmlFor={key}>{field.label}</Label>
                                     <Input className="dark:bg-black/40 bg-white/30 shadow-main" id={key} type="text" placeholder={field.placeholder} />
                                 </div>
                             ))}
@@ -45,7 +45,7 @@ export const FormJob = () => {
                         </h2>
                         <form className="space-y-4">
                             {Object.entries(postJobPageData.formSender).map(([key, field]) => (
-                                <div key={key} className="flex flex-row gap-1.5">
+                                <div key={key} className="flex flex-col md:flex-row gap-1.5">
                                     <Label className="w-1/3 !bg-mainColor/30 shadow-main" variant={"main"} htmlFor={key}>{field.label}</Label>
                                     <Input className="dark:bg-black/40 bg-white/30 shadow-main" id={key} type="text" placeholder={field.placeholder} />
                                 </div>
@@ -55,7 +55,10 @@ export const FormJob = () => {
                     <Button className="w-full rounded-full">{postJobPageData.cta.buttonLabel}</Button>
 
                 </div>
-                <div className="w-[30%] space-y-5">
+                <div className="md:w-[30%] space-y-5 mt-10 md:mt-0">
+                    <Title className="md:hidden block">
+                        How It Works
+                    </Title>
                     <div className="grid gap-6">
                         {postJobPageData.steps.map((step) => (
                             <div key={step.step} className="p-6 bg-gradient-to-tr from-lightColor dark:from-darkColor to-mainColor/60 dark:to-mainColor/30 dark:bg-darkColor rounded-xl hover:invert duration-300 ease-in-out">
